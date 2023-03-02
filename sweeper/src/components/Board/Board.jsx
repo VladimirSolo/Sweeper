@@ -9,19 +9,26 @@ export default function Board() {
   useEffect(() => {
     const newBoard = () => {
       const boardLoad =  createBoard(16, 16, 32);
-      setGrid(boardLoad)
+      setGrid(boardLoad.board)
     }
     newBoard()
   }, [])
 
+  const updateFlag = (event, x, y) => {
+    event.preventDefault();
+    let newGrid = JSON.parse(JSON.stringify(grid));
+    newGrid[x][y].flagged = true;
+    setGrid(newGrid)
+  }
+
   return (
     <div>
-      {grid.board ? 
-        grid.board.map((el) => (
-        <div className={style.container}>
+      {grid ? 
+        grid.map((el) => (
+        <div className={style.container} key={Math.random() * 9999}>
           {el.map((item) => (
 
-            <Cube cell={item.value} />
+            <Cube cell={item} updateFlag={updateFlag} key={Math.random() * 9999} />
           ) )}
           </div>
       ))
