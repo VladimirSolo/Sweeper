@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import checked from '../../lib/checked';
 import createBoard from '../../lib/createBoard';
 import Cube from '../Cube/Cube';
 import style from './Board.module.css';
@@ -24,10 +25,13 @@ export default function Board() {
   const checkCube = (x, y) => {
     let newGrid = JSON.parse(JSON.stringify(grid));
     if(newGrid[x][y].value === 'X') {
-      alert('mine')
+      alert('bomb')
+    } else {
+      let checkedBoard = checked(newGrid, x, y);
+      setGrid(checkedBoard.arr)
     }
-    newGrid[x][y].revealed = true;
-    setGrid(newGrid);
+    // newGrid[x][y].revealed = true;
+    // setGrid(newGrid);
   }
 
   return (
