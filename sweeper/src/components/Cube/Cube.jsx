@@ -9,7 +9,7 @@ export default function Cube({ cell, updateFlag, checkCube }) {
      onClick={() => checkCube(x, y)}
      onContextMenu={(e) => updateFlag(e, x, y)}
      >
-      {cell.value !==0  && cell.value}
+      {cell.revealed ? cell.value : ''}
     </div>
   )
 }
