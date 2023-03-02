@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import createBoard from '../lib/createBoard';
+import createBoard from '../../lib/createBoard';
+import Cube from '../Cube/Cube';
+import style from './Board.module.css';
 
 export default function Board() {
   const [grid, setGrid] = useState([]);
@@ -16,9 +18,10 @@ export default function Board() {
     <div>
       {grid.board ? 
         grid.board.map((el) => (
-        <div style={{display: 'flex'}}>
+        <div className={style.container}>
           {el.map((item) => (
-            <div style={{width: 30, height: 30, border: '1px solid gray'}}>{item.value}</div>
+
+            <Cube cell={item.value} />
           ) )}
           </div>
       ))
