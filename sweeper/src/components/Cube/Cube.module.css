@@ -4,5 +4,8 @@
   align-items: center;
   width: 30px;
   height: 30px;
-  border: 1px solid gray;
+  background-color: #dde7f5;
+  border: 2px solid rgb(244, 138, 138);
+  cursor: pointer;
  }
+ 

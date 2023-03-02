@@ -21,6 +21,15 @@ export default function Board() {
     setGrid(newGrid)
   }
 
+  const checkCube = (x, y) => {
+    let newGrid = JSON.parse(JSON.stringify(grid));
+    if(newGrid[x][y].value === 'X') {
+      alert('mine')
+    }
+    newGrid[x][y].revealed = true;
+    setGrid(newGrid);
+  }
+
   return (
     <div>
       {grid ? 
@@ -28,7 +37,7 @@ export default function Board() {
         <div className={style.container} key={Math.random() * 9999}>
           {el.map((item) => (
 
-            <Cube cell={item} updateFlag={updateFlag} key={Math.random() * 9999} />
+            <Cube cell={item} checkCube={checkCube} updateFlag={updateFlag} key={Math.random() * 9999} />
           ) )}
           </div>
       ))
