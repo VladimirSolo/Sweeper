@@ -1,6 +1,6 @@
 export default function createBoard(row, col, bombs) {
   let board = [];
-  let mineLocation = [];
+  let bombsPosition = [];
 
   for (let x = 0; x < row; x++) {
     let subCol = [];
@@ -23,7 +23,7 @@ export default function createBoard(row, col, bombs) {
 
     if (board[x][y].value === 0) {
       board[x][y].value = "X";
-      mineLocation.push([x, y]);
+      bombsPosition.push([x, y]);
       bombsCount++;
     }
   }
@@ -79,7 +79,7 @@ export default function createBoard(row, col, bombs) {
       }
     }
   }
-  return { board, mineLocation };
+  return { board, bombsPosition };
 };
 
 function randomNum(min, max) {
